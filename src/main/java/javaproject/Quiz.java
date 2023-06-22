@@ -65,17 +65,19 @@ public class Quiz {
                         incorrectAnswers[i] = incorrectAnswersArray.get(i).getAsString();
                     }
 
-                    System.out.println("Question: " + question);
+                    System.out.println("Question: " + question.replaceAll("&quot;", "\"").replaceAll("&#039;", "'"));
                     String[] options = { correctAnswer, incorrectAnswers[0], incorrectAnswers[1], incorrectAnswers[2] };
 
                     // Randomize the order of options
                     List<String> optionsList = Arrays.asList(options);
                     Collections.shuffle(optionsList);
                     options = optionsList.toArray(new String[0]);
-                
+                    System.out.println("Options: ");
                     for (String opt : options) {
-                        System.out.print(opt + "\t");
+                        System.out.print(opt + "\n");
                     }
+                    System.out.println("--------------------");
+
                     System.out.println("Enter Your Answer: ");
                     String user_option = scanner.nextLine();
                     if (user_option.toLowerCase().equals(correctAnswer.toLowerCase())) {
